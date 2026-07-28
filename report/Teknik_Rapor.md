@@ -386,4 +386,43 @@ Müşteriye Gönderim
 ```
 
 Bu süreçte yapay zekâ ilk taslağı hazırlarken, nihai karar ve gönderim yetkisi insan kullanıcıda kalmaktadır. Böylece hem hız hem de kalite artırılabilir.
+# 8. Riskler ve Dikkat Edilmesi Gereken Noktalar
+
+Claude ve benzeri yapay zekâ sistemleri birçok avantaj sağlasa da kurumsal kullanımlarda dikkat edilmesi gereken bazı riskler bulunmaktadır.
+
+## 8.1 Veri Gizliliği
+
+Kuruma ait gizli bilgiler, müşteri verileri veya kişisel veriler yapay zekâ sistemlerine gönderilmeden önce kurum politikaları ve yürürlükteki mevzuat dikkate alınmalıdır.
+
+## 8.2 Doğrulama İhtiyacı
+
+Yapay zekâ tarafından oluşturulan içerikler her zaman doğru olmayabilir. Teknik raporlar, kodlar ve analizler uzman kişiler tarafından kontrol edilmelidir.
+
+## 8.3 Aşırı Bağımlılık
+
+Yapay zekâ sistemleri karar verici değil, karar destek aracı olarak kullanılmalıdır. Nihai sorumluluk kullanıcıya aittir.
+
+## 8.4 Güncellik
+
+Yapay zekâ modellerinin verdiği bilgiler güncel olmayabilir. Gerektiğinde resmi dokümanlar ve güvenilir kaynaklarla doğrulama yapılmalıdır.
+
+---
+
+# 9. Sonuç
+
+Bu araştırmada Claude ekosisteminin temel bileşenleri olan Skills, Model Context Protocol (MCP), Prompt Engineering teknikleri ve Workflow tasarımları incelenmiştir.
+
+Yapılan değerlendirmeler sonucunda, doğru prompt teknikleri ve uygun entegrasyonlarla Claude'un kurum içindeki birçok iş sürecinde verimlilik sağlayabileceği görülmüştür. Özellikle teknik rapor hazırlama, doküman düzenleme, yazılım geliştirme ve müşteri iletişimi gibi alanlarda önemli zaman tasarrufu sağlayabilecek bir yardımcı araç olduğu değerlendirilmiştir.
+
+Ancak yapay zekâ tarafından üretilen içeriklerin doğruluğunun insan tarafından kontrol edilmesi, veri gizliliğine dikkat edilmesi ve kritik kararların yalnızca yapay zekâ çıktısına dayandırılmaması gerektiği sonucuna varılmıştır.
+
+---
+
+# 10. Kaynakça
+
+1. Anthropic Documentation – https://docs.anthropic.com/
+2. Anthropic Support Center – https://support.anthropic.com/
+3. Anthropic MCP Documentation – https://modelcontextprotocol.io/
+4. Anthropic Prompt Engineering Guide – https://docs.anthropic.com/
+5. GitHub Model Context Protocol Organization – https://github.com/modelcontextprotocol
 
