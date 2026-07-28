@@ -305,4 +305,85 @@ Görev, bağlam ve çıktı biçiminin ayrı etiketlerle belirtilmesi istemin ok
 ### Genel Değerlendirme
 
 Yapılan testler sonucunda açık talimatlar, uygun örnekler ve yapılandırılmış istemlerin birlikte kullanıldığı durumlarda daha tutarlı ve kaliteli çıktılar elde edildiği gözlemlenmiştir. Özellikle kurumsal kullanım senaryolarında görevin amacı, kısıtları ve çıktı biçiminin açık şekilde belirtilmesi önerilmektedir.
+# 6. Başarılı Kullanım Örnekleri
+
+Claude ve benzeri büyük dil modelleri günümüzde birçok sektörde aktif olarak kullanılmaktadır. Doğru prompt teknikleri ve uygun entegrasyonlarla iş süreçlerinde önemli verimlilik artışları sağlanabilmektedir.
+
+### 6.1 Yazılım Geliştirme
+
+Yazılım ekipleri Claude'u;
+
+- Kod açıklamaları oluşturma,
+- Dokümantasyon hazırlama,
+- Kod inceleme (Code Review),
+- Test senaryoları oluşturma,
+- Hata analizleri
+
+gibi görevlerde destek amaçlı kullanabilmektedir.
+
+### 6.2 Müşteri Hizmetleri
+
+Müşteri destek ekipleri;
+
+- Sık sorulan soruların cevaplanması,
+- E-posta taslaklarının hazırlanması,
+- Destek taleplerinin sınıflandırılması,
+- Önceliklendirme işlemleri
+
+gibi süreçlerde yapay zekâdan yararlanabilmektedir.
+
+### 6.3 Teknik Doküman Hazırlama
+
+Claude;
+
+- Teknik rapor,
+- Toplantı özeti,
+- Kullanım kılavuzu,
+- Proje dokümantasyonu
+
+hazırlama süreçlerinde taslak oluşturma ve düzenleme desteği sağlayabilir.
+
+---
+
+# 7. Workflow Tasarımları
+
+Workflow, belirli bir işin başlangıcından tamamlanmasına kadar izlenen adımların planlı biçimde yürütülmesini ifade eder.
+
+Bu araştırma kapsamında kurum içerisinde kullanılabilecek iki örnek workflow önerilmiştir.
+
+## Workflow 1 – Teknik Rapor Hazırlama
+
+```text
+Konu Belirleme
+      ↓
+Bilgi Toplama
+      ↓
+Claude ile Taslak Oluşturma
+      ↓
+İnsan Kontrolü
+      ↓
+Son Düzenleme
+      ↓
+PDF/DOCX Teslimi
+```
+
+Bu workflow sayesinde rapor hazırlama sürecinde zaman tasarrufu sağlanabilir. Son kontrolün insan tarafından yapılması doğruluk açısından önemlidir.
+
+---
+
+## Workflow 2 – Müşteri Destek Süreci
+
+```text
+Müşteri Talebi
+      ↓
+Talebin Analizi
+      ↓
+Claude ile Taslak Cevap
+      ↓
+Personel Kontrolü
+      ↓
+Müşteriye Gönderim
+```
+
+Bu süreçte yapay zekâ ilk taslağı hazırlarken, nihai karar ve gönderim yetkisi insan kullanıcıda kalmaktadır. Böylece hem hız hem de kalite artırılabilir.
 
