@@ -593,6 +593,7 @@ flowchart LR
 **Şekil 8.3.** Claude destekli yazılım geliştirme iş akışı.
 
 ---
+
 ## 8.4 Workflow 4 – Müşteri Destek Süreci
 
 Claude, müşteri tarafından iletilen destek talebini analiz ederek kategorisini belirler ve uygun yanıt taslağını oluşturur.
@@ -609,6 +610,22 @@ flowchart LR
 **Şekil 8.4.** Claude destekli müşteri destek süreci.
 
 ---
+
+## 8.5 Workflow 5 – Siber Güvenlik Raporlama
+
+Claude, güvenlik tarama araçlarından elde edilen çıktıları analiz ederek bulguları sınıflandırır ve rapor oluşturur.
+
+```mermaid
+flowchart LR
+    A[Güvenlik Tarama Sonuçları] --> B[Claude]
+    B --> C[Bulgu Analizi]
+    C --> D[Risk Seviyesi]
+    D --> E[Çözüm Önerileri]
+    E --> F[Nihai Rapor]
+```
+
+**Şekil 8.5.** Claude ile siber güvenlik raporlama iş akışı.
+
 # 9. Riskler ve Dikkat Edilmesi Gereken Noktalar
 
 Claude güçlü bir yapay zekâ modeli olmasına rağmen bazı sınırlamalara sahiptir.
