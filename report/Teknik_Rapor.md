@@ -231,21 +231,24 @@ XML etiketleri kullanılarak hazırlanan promptlarda görev farklı bölümlere 
 Örnek yapı:
 
 ```xml
-Aşağıdaki müşteri mesajlarını kategorilere ayır.
-Örnek 1
-Mesaj: Uygulamaya giriş yapamıyorum.
-Kategori: Teknik Sorun
-Örnek 2
-Mesaj: Faturam beklediğimden yüksek geldi.
-Kategori: Fatura
-Örnek 3
-Mesaj: Siparişim hâlâ elime ulaşmadı.
-Kategori: Teslimat
-Şimdi aşağıdaki mesajı aynı formatta değerlendir.
-Mesaj:
-Şifremi değiştirdim ancak hesabıma giriş yapamıyorum.
-Kategori:
-Gerekçe:
+<role>
+Deneyimli bir siber güvenlik analisti olarak hareket et.
+</role>
+<context>
+Ubuntu tabanlı bir web sunucusunda temel güvenlik denetimi yapılmıştır.
+<
+/context
+>
+<task>
+Tespit edilen güvenlik bulgularını önem derecesine göre değerlendir.
+</task>
+<constraints>
+Kesin olmayan bilgileri gerçekmiş gibi yazma.
+Çıktıyı tablo halinde oluştur.
+</constraints>
+<output_format>
+Markdown tablo
+</output_format>
 ```
 
 Bu yaklaşım özellikle uzun ve karmaşık görevlerde okunabilirliği artırmaktadır.
@@ -279,7 +282,7 @@ Bu yöntem modelin her adımı ayrı değerlendirmesine imkân tanır ve daha tu
 
 ---
 
-# 6. Test Edilen Prompt Örnekleri ve Çıktıları
+# 6. Uygulamalı Prompt Testleri
 
 Araştırma kapsamında dört farklı Prompt Engineering tekniği Claude üzerinde uygulanmış ve elde edilen sonuçlar değerlendirilmiştir. Testlerde modelin verilen talimatlara uyumu, çıktı biçimini koruyabilmesi, içerik doğruluğu ve kullanım senaryolarına uygunluğu incelenmiştir.
 
@@ -320,7 +323,7 @@ Claude tarafından oluşturulan çıktı aşağıdaki görselde sunulmuştur.
 
 ### Değerlendirme
 
-Model verilen talimatlara büyük ölçüde uymuş, belirtilen başlıkları eksiksiz oluşturmuş ve hedef kitleye uygun teknik bir anlatım kullanmıştır.
+Claude verilen talimatlara büyük ölçüde uymuş, belirtilen başlıkları eksiksiz oluşturmuş ve teknik bir anlatım kullanmıştır.
 
 ### Sonuç
 
@@ -449,12 +452,12 @@ Claude, karmaşık bir sızma testi raporlama sürecini mantıklı ve takip edil
 
 ## 6.5 Test Sonuçlarının Karşılaştırılması
 
-| Test | Kullanılan Teknik | Sonuç |
-|------|-------------------|--------|
-| Test 1 | Açık ve Net Talimat | Başarılı |
-| Test 2 | Few-Shot Prompting | Başarılı |
-| Test 3 | XML Prompting | Başarılı |
-| Test 4 | Task Decomposition | Başarılı |
+| Test | Prompt Engineering Tekniği | Değerlendirilen Özellik | Sonuç |
+|:-----:|----------------------------|-------------------------|:------:|
+| Test 1 | Açık ve Net Talimat | Talimatlara uyum, çıktı biçimi ve içerik düzeni | ✅ Başarılı |
+| Test 2 | Few-Shot Prompting | Örneklerden öğrenme ve doğru sınıflandırma | ✅ Başarılı |
+| Test 3 | XML Prompting | Yapılandırılmış talimatların doğru yorumlanması ve kısıtlara uyum | ✅ Başarılı |
+| Test 4 | Task Decomposition | Karmaşık görevin mantıklı alt adımlara ayrılması | ✅ Başarılı |
 
 Yapılan uygulamalar sonucunda Claude'un verilen talimatlara yüksek oranda uyum sağladığı gözlemlenmiştir. Özellikle açık ve ayrıntılı promptlarda daha düzenli ve tutarlı çıktılar üretildiği görülmüştür. Few-Shot Prompting sınıflandırma işlemlerinde başarılı sonuç verirken, XML etiketleri karmaşık görevlerin düzenli biçimde ifade edilmesini kolaylaştırmıştır. Task Decomposition tekniği ise çok aşamalı işlemlerin planlanmasında modelin daha sistematik çalışmasını sağlamıştır.
 
