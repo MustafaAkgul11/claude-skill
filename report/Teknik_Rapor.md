@@ -165,7 +165,26 @@ Bu örnekte raporun uzunluğu, hedef kitlesi ve kapsamı belirtilmediği için m
 ### Geliştirilmiş Prompt
 
 ```text
-Üniversite öğrencilerine yönelik, Linux işletim sisteminin temel özelliklerini açıklayan yaklaşık 500 kelimelik teknik bir rapor hazırla. Raporda Linux'un tarihçesi, açık kaynak yapısı, kullanım alanları ve avantajları yer alsın. Çıktıyı Markdown biçiminde oluştur.
+Sen deneyimli bir Linux sistem yöneticisisin.
+
+Görev:
+Linux işletim sistemi hakkında teknik fakat anlaşılır bir rapor hazırla.
+
+Rapor aşağıdaki başlıklardan oluşsun:
+
+1. Linux'un kısa tarihçesi
+2. Temel özellikleri
+3. Kullanım alanları
+4. Avantajları
+5. Dezavantajları
+6. Sonuç
+
+Kurallar:
+- Markdown kullan.
+- Başlıklar H2 formatında olsun.
+- Madde işaretleri kullan.
+- Yaklaşık 400–500 kelime yaz.
+- Teknik terimleri gerektiğinde kısa açıklamalarla destekle.
 ```
 
 Bu promptta görevin amacı, kapsamı ve çıktı formatı açıkça belirtilmiştir.
