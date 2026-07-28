@@ -272,11 +272,34 @@ Araştırma kapsamında dört farklı Prompt Engineering tekniği Claude üzerin
 
 ### Kullanılan Prompt
 
-Üniversite öğrencilerine yönelik Linux işletim sistemi hakkında yaklaşık 500 kelimelik teknik bir rapor hazırla. Raporda Linux'un tarihçesi, açık kaynak yapısı, kullanım alanları ve avantajları yer alsın. Çıktıyı Markdown biçiminde oluştur.
+Sen deneyimli bir Linux sistem yöneticisisin.
+
+Görev:
+Linux işletim sistemi hakkında teknik fakat anlaşılır bir rapor hazırla.
+
+Rapor aşağıdaki başlıklardan oluşsun:
+
+1. Linux'un kısa tarihçesi
+2. Temel özellikleri
+3. Kullanım alanları
+4. Avantajları
+5. Dezavantajları
+6. Sonuç
+
+Kurallar:
+- Markdown kullan.
+- Başlıklar H2 formatında olsun.
+- Madde işaretleri kullan.
+- Yaklaşık 400–500 kelime yaz.
+- Teknik terimleri gerektiğinde kısa açıklamalarla destekle.
 
 ### Claude Çıktısı
 
-Claude, istenilen uzunluğa yakın, Markdown başlıkları kullanan ve Linux'un tarihçesi, açık kaynak yapısı, kullanım alanları ile avantajlarını açıklayan düzenli bir teknik rapor oluşturmuştur.
+Claude tarafından oluşturulan çıktı aşağıdaki görselde sunulmuştur.
+
+![Açık ve Net Talimat](../images/test1-acik-net-talimat.png)
+
+*Şekil 6.1. Açık ve Net Talimat tekniği kullanılarak Linux teknik raporu oluşturulması.*
 
 ### Değerlendirme
 
@@ -292,14 +315,29 @@ Model verilen talimatlara büyük ölçüde uymuş, belirtilen başlıkları eks
 
 ### Kullanılan Prompt
 
-Örnek müşteri mesajları kullanılarak yeni bir destek talebinin kategorisinin belirlenmesi istenmiştir.
+Aşağıdaki müşteri mesajlarını kategorilere ayır.
+Örnek 1
+Mesaj: Uygulamaya giriş yapamıyorum.
+Kategori: Teknik Sorun
+Örnek 2
+Mesaj: Faturam beklediğimden yüksek geldi.
+Kategori: Fatura
+Örnek 3
+Mesaj: Siparişim hâlâ elime ulaşmadı.
+Kategori: Teslimat
+Şimdi aşağıdaki mesajı aynı formatta değerlendir.
+Mesaj:
+Şifremi değiştirdim ancak hesabıma giriş yapamıyorum.
+Kategori:
+Gerekçe:
 
 ### Claude Çıktısı
 
-Kategori: Teknik Sorun
+Claude'un Few-Shot Prompting tekniğine verdiği cevap aşağıdaki görselde gösterilmiştir.
 
-Gerekçe: Mesaj kullanıcı hesabına erişim problemi içerdiği için teknik destek kapsamında değerlendirilmiştir.
+![Few Shot](../images/test2-few-shot.png)
 
+*Şekil 6.2. Few-Shot Prompting tekniği ile müşteri mesajının sınıflandırılması.*
 ### Değerlendirme
 
 Model, örneklerden öğrendiği sınıflandırma biçimini koruyarak yeni mesajı doğru kategoriye yerleştirmiştir.
@@ -314,12 +352,36 @@ Model, örneklerden öğrendiği sınıflandırma biçimini koruyarak yeni mesaj
 
 ### Kullanılan Prompt
 
-XML etiketleri kullanılarak Ubuntu sunucusundaki güvenlik bulgularının değerlendirilmesi istenmiştir.
+<role>
+Deneyimli bir siber güvenlik analisti olarak hareket et.
+</role>
+<context>
+Ubuntu tabanlı bir web sunucusunda temel güvenlik denetimi yapılmıştır.
+<
+/context
+>
+<task>
+Tespit edilen güvenlik bulgularını önem derecesine göre değerlendir.
+</task>
+<constraints>
+Kesin olmayan bilgileri gerçekmiş gibi yazma.
+Çıktıyı tablo halinde oluştur.
+</constraints>
+<output_format>
+Markdown tablo
+</output_format>
 
 ### Claude Çıktısı
 
-Claude ilk aşamada gerçek sistem verisi bulunmadığı için doğrudan güvenlik raporu üretmek yerine ek açıklama istemiştir. Eğitim amacıyla örnek veri kullanılması belirtildikten sonra bulguları risk seviyelerine göre sınıflandırmış ve çözüm önerilerini Markdown tablosu halinde sunmuştur.
+XML Prompting tekniğine ait prompt ve Claude tarafından oluşturulan cevap aşağıdaki görsellerde gösterilmiştir.
 
+![XML Prompting](../images/test3-xml-prompting.png)
+
+*Şekil 6.3. XML Prompting testinde kullanılan prompt.*
+
+![XML Prompting Devam](../images/test3.1-xml-prompting.png)
+
+*Şekil 6.4. Claude tarafından oluşturulan güvenlik değerlendirmesi ve Markdown çıktısı.*
 ### Değerlendirme
 
 Model XML yapısını doğru yorumlamış, kesin olmayan bilgileri gerçekmiş gibi sunmamış ve verilen kısıtlara uygun davranmıştır.
@@ -334,21 +396,30 @@ Model XML yapısını doğru yorumlamış, kesin olmayan bilgileri gerçekmiş g
 
 ### Kullanılan Prompt
 
-Bir sızma testi raporunun hazırlanma sürecini adım adım planla.
+Bir web uygulamasına yönelik sızma testi raporu hazırlama sürecini küçük ve mantıklı adımlara ayır.
+Her adım için:
+- Amaç
+- Yapılacak işlem
+- Beklenen çıktı
+başlıklarını kullan.
+Sonunda tüm süreci özetleyen kısa bir sonuç ekle.
 
 ### Claude Çıktısı
 
-Model görevi dokuz aşamaya ayırmıştır:
 
-1. Kapsam belirleme
-2. Bilgi toplama
-3. Zafiyet taraması
-4. Doğrulama
-5. Risk değerlendirmesi
-6. Dokümantasyon
-7. Çözüm önerileri
-8. Yönetici özeti
-9. Son kontrol
+Task Decomposition tekniğine ait prompt ve Claude'un oluşturduğu plan aşağıdaki görsellerde gösterilmiştir.
+
+![Task Decomposition](../images/test4-task-decomposition.png)
+
+*Şekil 6.5. Task Decomposition testinde kullanılan prompt.*
+
+![Task Decomposition Devam](../images/test4.1-task-decomposition.png)
+
+*Şekil 6.6. Claude tarafından oluşturulan görev planının ilk bölümü.*
+
+![Task Decomposition Devam](../images/test4.2-task-decomposition.png)
+
+*Şekil 6.7. Claude tarafından oluşturulan görev planının devamı.*
 
 ### Değerlendirme
 
