@@ -1,140 +1,126 @@
-# Claude Skills ve Model Context Protocol (MCP)
-
-## Teknik Araştırma Raporu
+# Claude Skills ve Model Context Protocol (MCP) Araştırması
 
 **Hazırlayan:** Mustafa Akgül
 
 **Şirket:** Prodrom Bilişim Teknolojileri Ltd. Şti.
 
-**Proje:** Claude Ekosistemi Araştırması
+**Staj Konusu:** Claude Ekosistemi Araştırması
 
 **Tarih:** Temmuz 2026
 
 ---
 
+# İçindekiler
+
+1. Giriş
+2. Araştırmanın Amacı
+3. Claude Skills
+4. Model Context Protocol (MCP)
+5. Prompt Engineering Teknikleri
+6. Test Edilen Prompt Örnekleri ve Çıktıları
+7. Başarılı Kullanım Örnekleri
+8. Workflow Tasarımları
+9. Riskler ve Dikkat Edilmesi Gereken Noktalar
+10. Sonuç
+11. Kaynakça
+
+---
+
 # 1. Giriş
 
-Yapay zekâ destekli büyük dil modelleri (Large Language Models - LLM), yazılım geliştirme, veri analizi, doküman oluşturma ve iş süreçlerinin otomasyonu gibi birçok alanda yaygın olarak kullanılmaktadır. Anthropic tarafından geliştirilen Claude modeli, güvenlik odaklı yaklaşımı, doğal dil işleme yetenekleri ve geniş bağlam penceresi sayesinde kurumsal kullanım senaryolarında öne çıkmaktadır.
+Yapay zekâ teknolojileri son yıllarda büyük bir gelişim göstermiş ve yazılım geliştirme, siber güvenlik, veri analizi, müşteri hizmetleri ve teknik dokümantasyon gibi birçok alanda aktif olarak kullanılmaya başlanmıştır. Büyük Dil Modelleri (Large Language Models - LLM), doğal dili anlayabilme ve insan benzeri metinler üretebilme yetenekleri sayesinde bireysel ve kurumsal kullanıcılara önemli kolaylıklar sağlamaktadır.
 
-Claude yalnızca soru-cevap üreten bir sohbet modeli değildir. Belgeler üzerinde çalışabilir, kod üretebilir, özetleme yapabilir, iş akışlarını destekleyebilir ve harici sistemlerle bütünleşerek daha gelişmiş görevleri yerine getirebilir.
+Anthropic tarafından geliştirilen Claude modeli de bu alandaki önemli yapay zekâ sistemlerinden biridir. Claude; doğal dil işleme, metin üretimi, kod geliştirme, teknik doküman hazırlama ve veri analizi gibi görevlerde kullanılabilmektedir. Bunun yanında Claude, yalnızca bir sohbet modeli olarak değil, farklı araçlar ve sistemlerle birlikte çalışabilecek şekilde tasarlanmış bir ekosisteme sahiptir.
 
-Bu raporda Claude Skills, Model Context Protocol (MCP), Prompt Engineering teknikleri ve kurumsal kullanım senaryoları incelenmiştir.
+Bu araştırmada Claude ekosisteminin önemli bileşenleri olan **Claude Skills**, **Model Context Protocol (MCP)** ve **Prompt Engineering** teknikleri incelenmiş, farklı istem (prompt) yöntemleri gerçek örnekler üzerinde test edilmiş ve elde edilen sonuçlar değerlendirilmiştir. Ayrıca kurum içerisinde kullanılabilecek örnek iş akışları (workflow) ve entegrasyon önerileri hazırlanmıştır.
 
 ---
 
 # 2. Araştırmanın Amacı
 
-Bu çalışmanın amacı;
+Bu araştırmanın temel amacı, Claude ekosisteminin kurumsal kullanım açısından sunduğu imkânları incelemek ve farklı Prompt Engineering tekniklerinin model çıktıları üzerindeki etkisini değerlendirmektir.
 
-- Claude Skills kavramını incelemek,
-- Model Context Protocol (MCP) mimarisini araştırmak,
-- Prompt Engineering tekniklerini karşılaştırmak,
-- Kurumsal kullanım senaryoları oluşturmak,
-- Yapay zekâ destekli iş akışlarını değerlendirmektir.
+Araştırma kapsamında aşağıdaki sorulara cevap aranmıştır:
 
-  # 3. Claude Skills
+- Claude Skills nedir?
+- Model Context Protocol (MCP) nasıl çalışmaktadır?
+- Prompt Engineering neden önemlidir?
+- Farklı prompt teknikleri model davranışını nasıl etkilemektedir?
+- Claude kurumsal süreçlerde hangi alanlarda kullanılabilir?
+- Kurum içerisinde uygulanabilecek örnek iş akışları nasıl tasarlanabilir?
 
-## 3.1 Claude Skill Nedir?
+Bu çalışma sonucunda elde edilen bilgiler, yapay zekâ destekli sistemlerin kurumsal süreçlerde daha verimli kullanılabilmesi amacıyla değerlendirilmiştir.
 
-Claude Skills, Claude'un belirli görevleri daha etkili ve düzenli şekilde yerine getirebilmesini sağlayan yeteneklerdir. Bu yetenekler sayesinde Claude yalnızca metin üretmekle kalmaz; belge oluşturma, dosya düzenleme, veri analizi, kod üretme ve farklı araçlarla çalışma gibi işlemleri de gerçekleştirebilir.
+---
 
-Skill kavramı, yapay zekâ modelinin belirli bir göreve odaklanmasını sağlayan bilgi, talimat ve araçların bir araya getirilmiş hâli olarak düşünülebilir. Böylece kullanıcı her seferinde aynı talimatları vermek yerine, belirli bir amacı yerine getiren hazır bir yetenekten faydalanabilir.
+# 3. Claude Skills
 
-## 3.2 Belge Oluşturma ve Düzenleme
+## 3.1 Claude Skills Nedir?
 
-Claude, uygun araçlarla birlikte kullanıldığında çeşitli belge formatları üzerinde çalışabilir.
+Claude Skills, Claude modeline belirli görevleri daha sistemli ve tekrar kullanılabilir biçimde yerine getirme yeteneği kazandıran yapılandırılmış komut ve iş akışlarıdır. Bir Skill, yalnızca tek bir prompttan oluşmaz; görev tanımı, kullanılacak araçlar, çalışma kuralları ve beklenen çıktı biçimini birlikte tanımlar.
 
-Desteklenen yaygın belge türleri:
+Bu yaklaşım sayesinde aynı görevin her seferinde benzer kalite ve formatta gerçekleştirilmesi mümkün olur.
 
-- DOCX (Microsoft Word)
-- PPTX (Microsoft PowerPoint)
-- XLSX (Microsoft Excel)
-- PDF
-- Markdown (.md)
-- CSV
+## 3.2 Claude Skills'in Sağladığı Avantajlar
 
-Bu belgeler üzerinde;
+Claude Skills yaklaşımının başlıca avantajları şunlardır:
 
-- yeni belge oluşturma,
-- mevcut belgeyi düzenleme,
-- özet çıkarma,
-- tablo oluşturma,
-- rapor hazırlama,
-- içerik yeniden düzenleme
+- Standartlaştırılmış görevler oluşturulabilir.
+- Aynı görev farklı kullanıcılar tarafından benzer sonuçlarla gerçekleştirilebilir.
+- Hata oranı azaltılabilir.
+- İş süreçleri hızlandırılabilir.
+- Kurumsal bilgi birikimi korunabilir.
+- Tekrarlayan işler otomatikleştirilebilir.
 
-gibi işlemler gerçekleştirilebilir.
+## 3.3 Kullanım Alanları
 
-## 3.3 İş Süreçlerinde Sağladığı Avantajlar
+Claude Skills aşağıdaki alanlarda kullanılabilir:
 
-Claude Skills, özellikle tekrarlayan ofis çalışmalarında önemli zaman kazancı sağlayabilir.
+| Kullanım Alanı | Açıklama |
+|---------------|----------|
+| Yazılım Geliştirme | Kod açıklama, dokümantasyon, test senaryoları |
+| Siber Güvenlik | Güvenlik raporları, log analizi, olay değerlendirme |
+| Teknik Dokümantasyon | Kullanım kılavuzları ve teknik raporlar |
+| Müşteri Hizmetleri | Destek taleplerinin sınıflandırılması ve cevap taslakları |
+| Veri Analizi | Büyük veri kümelerinin özetlenmesi ve yorumlanması |
 
-Örnek kullanım alanları:
+## 3.4 Kurumsal Kullanım Açısından Değerlendirme
 
-| İş Süreci | Sağladığı Katkı |
-|-----------|-----------------|
-| Teknik rapor hazırlama | Taslak oluşturma ve düzenleme |
-| Sunum hazırlama | Slayt içeriklerinin oluşturulması |
-| Kod dokümantasyonu | Kod açıklamalarının hazırlanması |
-| Toplantı notları | Özet çıkarılması |
-| Veri analizi | Sonuçların yorumlanması |
-| Doküman düzenleme | Yazım ve biçimlendirme desteği |
+Kurumsal yapılarda Claude Skills kullanımı, çalışanların rutin işlemlerini hızlandırabilir ve belirli görevlerde standart bir kalite seviyesi oluşturabilir. Ancak model tarafından üretilen içeriklerin özellikle teknik, hukuki ve güvenlikle ilgili konularda insan kontrolünden geçirilmesi gerekmektedir.
 
-Bu işlemler sayesinde çalışanların rutin iş yükü azalırken daha fazla zaman analiz, planlama ve karar verme süreçlerine ayrılabilir.
+---
 
-## 3.4 Kuruma Özel Skill Önerisi
+# 4. Model Context Protocol (MCP)
 
-Araştırma kapsamında kurum için örnek bir Skill önerisi geliştirilmiştir.
+## 4.1 Model Context Protocol Nedir?
 
-**Teknik Rapor Asistanı**
+Model Context Protocol (MCP), yapay zekâ modellerinin harici sistemler ve araçlarla standart bir iletişim kurmasını sağlayan açık bir protokoldür. MCP sayesinde model; dosya sistemleri, veritabanları, kod depoları veya kurumsal uygulamalar gibi farklı kaynaklardan bilgi alabilir ve bu bilgileri görevlerini yerine getirirken kullanabilir.
 
-Bu Skill'in amacı, teknik ekip tarafından hazırlanan raporları standart bir formatta oluşturmak ve düzenlemektir.
+Bu yaklaşım, yapay zekâ modellerinin yalnızca eğitim verilerine bağlı kalmasını önleyerek güncel ve bağlama uygun bilgilerle çalışmasına imkân tanır.
 
-Önerilen özellikleri:
+## 4.2 MCP'nin Çalışma Prensibi
 
-- Standart rapor şablonunu kullanma
-- Başlıkları otomatik oluşturma
-- Yazım ve dil kontrolü yapma
-- Kaynakça düzenleme
-- PDF ve DOCX çıktısı hazırlama
-  Bu çalışma kapsamında resmi dokümantasyon incelenmiş, örnek promptlar hazırlanmış ve kurumsal iş süreçlerine yönelik örnek workflow tasarımları geliştirilmiştir.
+MCP mimarisinde üç temel bileşen bulunmaktadır:
 
-  # 4. Model Context Protocol (MCP)
+- **Host:** Yapay zekâ uygulamasını çalıştıran istemci.
+- **Client:** Host ile sunucu arasında iletişimi sağlayan katman.
+- **Server:** Belirli araç veya veri kaynağını modele sunan servis.
 
-## 4.1 MCP Nedir?
+Bu yapı sayesinde model, standart bir protokol üzerinden farklı sistemlere güvenli biçimde erişebilir.
 
-Model Context Protocol (MCP), yapay zekâ modellerinin harici veri kaynakları, uygulamalar ve servislerle güvenli ve standart bir yöntem kullanarak iletişim kurmasını sağlayan açık bir protokoldür. Bu yapı sayesinde bir yapay zekâ modeli yalnızca eğitim verisine bağlı kalmaz; ihtiyaç duyduğu anda farklı sistemlerden güncel bilgi alabilir ve bu sistemlerle etkileşim kurabilir.
+## 4.3 MCP'nin Avantajları
 
-MCP'nin temel amacı, farklı araçlar ile yapay zekâ modelleri arasında ortak bir iletişim standardı oluşturmaktır. Böylece her uygulama için ayrı entegrasyon geliştirmek yerine tek bir protokol üzerinden birçok sisteme erişim sağlanabilir.
+MCP'nin sağladığı başlıca avantajlar aşağıda verilmiştir:
 
-## 4.2 MCP Nasıl Çalışır?
-
-MCP mimarisi genel olarak üç bileşenden oluşur:
-
-- **MCP Host:** Yapay zekâ uygulamasını çalıştıran istemci.
-- **MCP Client:** İstekleri ilgili sunucuya ileten bileşen.
-- **MCP Server:** Dosya sistemi, veritabanı veya başka bir servise erişim sağlayan bileşen.
-
-Bu yapı sayesinde kullanıcı bir istekte bulunduğunda yapay zekâ modeli gerekli bilgiyi uygun MCP sunucusundan alabilir ve kullanıcıya güncel sonuç sunabilir.
-
-## 4.3 Yaygın MCP Sunucuları
-
-Günümüzde farklı amaçlar için geliştirilen birçok MCP sunucusu bulunmaktadır.
-
-Örnekler:
-
-- Dosya Sistemi (Filesystem)
-- GitHub
-- PostgreSQL
-- SQLite
-- Google Drive
-- Slack
-- Notion
-
-Bu entegrasyonlar sayesinde yapay zekâ modeli yalnızca metin üretmekle kalmaz, aynı zamanda mevcut kurumsal sistemlerle birlikte çalışabilir.
+- Farklı sistemlerle ortak iletişim standardı oluşturur.
+- Yeni araçların entegrasyonunu kolaylaştırır.
+- Güncel verilere erişim imkânı sağlar.
+- Kurumsal bilgi kaynaklarının yapay zekâ tarafından kullanılmasını mümkün kılar.
+- Modüler ve ölçeklenebilir bir mimari sunar.
 
 ## 4.4 Kurum İçin MCP Önerileri
 
-Araştırma sonucunda kurum içerisinde kullanılabilecek bazı MCP entegrasyon fikirleri aşağıda verilmiştir.
+Araştırma sonucunda kurum içerisinde kullanılabilecek bazı MCP entegrasyon önerileri aşağıda verilmiştir.
 
 | Entegrasyon | Sağlayacağı Fayda |
 |-------------|-------------------|
@@ -144,122 +130,124 @@ Araştırma sonucunda kurum içerisinde kullanılabilecek bazı MCP entegrasyon 
 | Slack MCP | Ekip iletişim süreçlerinin desteklenmesi |
 
 Bu entegrasyonlar sayesinde bilgiye erişim hızlanabilir, manuel işlemler azaltılabilir ve çalışanların verimliliği artırılabilir.
+
 # 5. Prompt Engineering Teknikleri
 
-Prompt Engineering, bir yapay zekâ modelinden daha doğru, tutarlı ve kullanılabilir sonuçlar elde etmek amacıyla verilen istemlerin sistemli biçimde hazırlanmasıdır. İyi hazırlanmış bir prompt; görevi, bağlamı, kısıtları ve beklenen çıktı biçimini açıkça belirtir.
+Prompt Engineering, büyük dil modellerinden (LLM) daha doğru, tutarlı ve istenilen biçimde çıktı alabilmek amacıyla istemlerin (prompt) planlı ve sistematik şekilde hazırlanması sürecidir. Hazırlanan promptun açık, anlaşılır ve amaca uygun olması modelin üreteceği cevabın kalitesini doğrudan etkilemektedir.
 
-Claude ile çalışırken kullanılan promptun açıklığı, verilen örneklerin kalitesi ve istenen çıktı formatının belirtilmesi sonuç üzerinde doğrudan etkilidir. Özellikle kurumsal görevlerde yalnızca genel bir istek vermek yerine, görevin amacı ve başarı ölçütleri de açıklanmalıdır.
+Claude modeli; doğal dili başarılı şekilde anlayabilmekle birlikte, verilen talimatların ayrıntı düzeyine göre farklı kalitede cevaplar üretebilmektedir. Bu nedenle Prompt Engineering, Claude'un verimli kullanılabilmesi açısından önemli bir konudur.
+
+Bu araştırmada dört farklı Prompt Engineering tekniği incelenmiş ve Claude üzerinde uygulanmıştır.
+
+---
 
 ## 5.1 Açık ve Net Talimat Verme
 
-Açık ve net talimat verme, temel prompt tekniklerinden biridir. Bu yöntemde kullanıcı, modelden istediği görevi belirsiz ifadeler yerine ayrıntılı ve doğrudan biçimde açıklar.
+Açık ve net talimat verme, en temel Prompt Engineering tekniklerinden biridir. Bu yöntemde modelden istenen görev ayrıntılı biçimde açıklanır. Görevin amacı, hedef kitlesi, çıktı biçimi ve varsa kısıtlar belirtilerek modelin belirsizlik yaşaması engellenir.
 
-İyi bir talimatta aşağıdaki unsurlar bulunabilir:
+İyi hazırlanmış bir prompt genellikle aşağıdaki bilgileri içerir:
 
 - Yapılacak görev
 - Görevin amacı
 - Kullanılacak bağlam
-- Uyulması gereken kısıtlar
-- İstenen çıktı biçimi
-- Hedef kullanıcı veya okuyucu kitlesi
+- Hedef kullanıcı
+- Beklenen çıktı biçimi
+- Uzunluk veya kapsam
 
-### Belirsiz Prompt Örneği
-
-```text
-Linux hakkında bir rapor hazırla.
-```
-
-Bu promptta raporun konusu, uzunluğu, hedef kitlesi ve biçimi belirtilmemiştir. Bu nedenle oluşturulan sonuç kullanıcının gerçek ihtiyacını tam olarak karşılamayabilir.
-
-### Geliştirilmiş Prompt Örneği
+### Belirsiz Prompt
 
 ```text
-Üniversite öğrencilerine yönelik, Linux işletim sisteminin temel özelliklerini açıklayan yaklaşık 500 kelimelik bir teknik rapor hazırla. Raporda Linux'un tarihçesi, açık kaynak yapısı, temel kullanım alanları ve avantajları yer alsın. Çıktıyı Markdown biçiminde, başlıklar ve kısa paragraflar kullanarak oluştur.
+Linux hakkında rapor hazırla.
 ```
 
-Geliştirilmiş promptta görev, hedef kitle, kapsam, uzunluk ve çıktı formatı açıkça belirtilmiştir. Böylece modelden alınan cevabın daha düzenli ve kullanılabilir olması beklenir.
+Bu örnekte raporun uzunluğu, hedef kitlesi ve kapsamı belirtilmediği için model farklı biçimlerde cevap verebilir.
+
+### Geliştirilmiş Prompt
+
+```text
+Üniversite öğrencilerine yönelik, Linux işletim sisteminin temel özelliklerini açıklayan yaklaşık 500 kelimelik teknik bir rapor hazırla. Raporda Linux'un tarihçesi, açık kaynak yapısı, kullanım alanları ve avantajları yer alsın. Çıktıyı Markdown biçiminde oluştur.
+```
+
+Bu promptta görevin amacı, kapsamı ve çıktı formatı açıkça belirtilmiştir.
+
+---
 
 ## 5.2 Few-Shot Prompting
 
-Few-Shot Prompting, modele görevden önce bir veya daha fazla örnek gösterilmesi yöntemidir. Model, verilen örneklerdeki yapıyı ve cevap biçimini inceleyerek yeni girdiye benzer şekilde cevap üretir.
+Few-Shot Prompting tekniğinde modele önce birkaç örnek gösterilir. Model bu örnekleri inceleyerek istenen cevap biçimini öğrenir ve yeni veriyi aynı yapıda değerlendirir.
 
-Bu yöntem özellikle aşağıdaki görevlerde yararlıdır:
+Bu yöntem özellikle;
 
 - Metin sınıflandırma
 - Bilgi çıkarma
-- Belirli bir yazım biçimini koruma
-- Müşteri mesajlarını kategorilere ayırma
-- Standart rapor veya kayıt oluşturma
+- Destek taleplerini kategorilere ayırma
+- Standart rapor oluşturma
 
-### Few-Shot Prompt Örneği
+gibi işlemlerde başarılı sonuçlar vermektedir.
+
+Örnek Few-Shot Prompt:
 
 ```text
-Aşağıdaki müşteri mesajlarını "Teknik Sorun", "Fatura" veya "Bilgi Talebi" kategorilerinden biriyle sınıflandır.
-
-Örnek 1:
-Mesaj: Uygulamaya giriş yaptığımda hata alıyorum.
+Mesaj: Uygulamaya giriş yapamıyorum.
 Kategori: Teknik Sorun
 
-Örnek 2:
-Mesaj: Bu ayki faturam neden daha yüksek geldi?
+Mesaj: Faturam neden yüksek geldi?
 Kategori: Fatura
 
-Örnek 3:
-Mesaj: Ürünün kurumsal paketi hakkında bilgi almak istiyorum.
+Mesaj: Kurumsal paket hakkında bilgi almak istiyorum.
 Kategori: Bilgi Talebi
 
-Yeni mesaj:
+Yeni Mesaj:
 Şifremi yeniledim ancak hesabıma hâlâ erişemiyorum.
 
 Kategori:
 ```
 
-Bu örnekte model, önceki örneklerden sınıflandırma biçimini öğrenir ve yeni mesajı aynı kategori yapısına göre değerlendirir.
+---
 
 ## 5.3 XML Etiketleriyle Yapılandırılmış Prompt
 
-XML etiketleri, uzun veya karmaşık promptlarda farklı bilgi bölümlerini birbirinden ayırmak için kullanılabilir. Rol, bağlam, görev, kısıtlar ve çıktı formatı ayrı etiketler içinde tanımlanabilir.
+XML etiketleri kullanılarak hazırlanan promptlarda görev farklı bölümlere ayrılır. Böylece model hangi bilginin rol, hangisinin görev veya çıktı formatı olduğunu daha kolay ayırt eder.
 
-### XML Prompt Örneği
+Örnek yapı:
 
 ```xml
-<role>
-Bir siber güvenlik analisti olarak görev yap.
-</role>
+<role>Bir siber güvenlik analisti olarak görev yap.</role>
 
 <context>
-Ubuntu tabanlı bir sunucuda güvenlik incelemesi gerçekleştirilmektedir.
+Ubuntu sunucusunda güvenlik incelemesi yapılmaktadır.
 </context>
 
 <task>
-Verilen güvenlik bulgularını önem derecesine göre değerlendir.
+Bulunan güvenlik açıklarını değerlendir.
 </task>
 
 <constraints>
 Kesin olmayan bilgileri gerçekmiş gibi sunma.
-Her bulgu için kısa bir çözüm önerisi ver.
 </constraints>
 
 <output_format>
-Sonucu Markdown tablosu olarak hazırla.
-Sütunlar: Bulgu, Risk Seviyesi, Açıklama, Çözüm.
+Markdown tablosu oluştur.
 </output_format>
 ```
 
-Bu yapı sayesinde promptun bölümleri açıkça ayrılır. Özellikle çok sayıda talimat, veri veya örnek içeren görevlerde okunabilirlik ve yönetilebilirlik artar.
+Bu yaklaşım özellikle uzun ve karmaşık görevlerde okunabilirliği artırmaktadır.
+
+---
+
 ## 5.4 Task Decomposition (Görev Bölme)
 
-Task Decomposition, büyük ve karmaşık bir görevin daha küçük ve yönetilebilir alt görevlere ayrılması yaklaşımıdır. Bu teknik, özellikle çok aşamalı işlemlerde modelin her adımı ayrı ayrı ele almasını sağlayarak daha tutarlı sonuçlar elde edilmesine yardımcı olur.
+Task Decomposition, karmaşık görevlerin daha küçük alt görevlere ayrılması yaklaşımıdır.
 
-Örneğin tek seferde "Bir sızma testi raporu hazırla." demek yerine süreç aşağıdaki şekilde bölünebilir:
+Örneğin;
 
-1. Hedef sistemi analiz et.
-2. Güvenlik açıklarını listele.
-3. Risk seviyelerini değerlendir.
-4. Çözüm önerileri hazırla.
-5. Teknik raporu oluştur.
+1. Sistemi analiz et.
+2. Güvenlik açıklarını belirle.
+3. Risk seviyelerini hesapla.
+4. Çözüm önerileri oluştur.
+5. Teknik raporu hazırla.
 
-Bu yaklaşım hem hata oranını azaltır hem de her aşamanın ayrı ayrı kontrol edilmesini kolaylaştırır.
+Bu yöntem modelin her adımı ayrı değerlendirmesine imkân tanır ve daha tutarlı sonuçlar elde edilmesini sağlar.
 
 ---
 
@@ -267,162 +255,344 @@ Bu yaklaşım hem hata oranını azaltır hem de her aşamanın ayrı ayrı kont
 
 | Teknik | Avantajı | Kullanım Alanı |
 |---------|----------|----------------|
-| Açık ve Net Talimat | Daha doğru cevaplar üretir | Genel amaçlı görevler |
-| Few-Shot Prompting | Belirli formatı öğretir | Sınıflandırma ve standart çıktılar |
-| XML Prompting | Karmaşık istemleri düzenler | Uzun ve çok aşamalı görevler |
-| Task Decomposition | Büyük görevleri yönetilebilir hâle getirir | Teknik analiz ve raporlama |
+| Açık ve Net Talimat | Daha doğru sonuç üretir | Genel amaçlı görevler |
+| Few-Shot Prompting | İstenen formatı öğretir | Sınıflandırma |
+| XML Prompting | Karmaşık görevleri düzenler | Teknik analiz |
+| Task Decomposition | Büyük işleri parçalara ayırır | Çok aşamalı işlemler |
 
 ---
 
-## 5.6 Test Edilen Prompt Örnekleri ve Gözlemler
+# 6. Test Edilen Prompt Örnekleri ve Çıktıları
 
-Araştırma kapsamında farklı prompt teknikleri kullanılarak örnek istemler hazırlanmıştır.
-
-### Test 1 – Açık Talimat
-
-**Sonuç:**
-
-Model, istenen çıktı biçimine büyük ölçüde uygun ve düzenli bir cevap üretmiştir.
+Araştırma kapsamında dört farklı Prompt Engineering tekniği Claude üzerinde uygulanmış ve elde edilen sonuçlar değerlendirilmiştir. Testlerde modelin verilen talimatlara uyumu, çıktı biçimini koruyabilmesi, içerik doğruluğu ve kullanım senaryolarına uygunluğu incelenmiştir.
 
 ---
 
-### Test 2 – Few-Shot Prompt
+## 6.1 Test 1 – Açık ve Net Talimat
 
-**Sonuç:**
+### Kullanılan Prompt
 
-Örnekler sayesinde model aynı biçimde ve tutarlı sınıflandırmalar gerçekleştirmiştir.
+Üniversite öğrencilerine yönelik Linux işletim sistemi hakkında yaklaşık 500 kelimelik teknik bir rapor hazırla. Raporda Linux'un tarihçesi, açık kaynak yapısı, kullanım alanları ve avantajları yer alsın. Çıktıyı Markdown biçiminde oluştur.
+
+### Claude Çıktısı
+
+Claude, istenilen uzunluğa yakın, Markdown başlıkları kullanan ve Linux'un tarihçesi, açık kaynak yapısı, kullanım alanları ile avantajlarını açıklayan düzenli bir teknik rapor oluşturmuştur.
+
+### Değerlendirme
+
+Model verilen talimatlara büyük ölçüde uymuş, belirtilen başlıkları eksiksiz oluşturmuş ve hedef kitleye uygun teknik bir anlatım kullanmıştır.
+
+### Sonuç
+
+**Başarılı**
 
 ---
 
-### Test 3 – XML Prompt
+## 6.2 Test 2 – Few-Shot Prompting
 
-**Sonuç:**
+### Kullanılan Prompt
 
-Görev, bağlam ve çıktı biçiminin ayrı etiketlerle belirtilmesi istemin okunabilirliğini artırmış ve daha düzenli cevaplar üretilmesini sağlamıştır.
+Örnek müşteri mesajları kullanılarak yeni bir destek talebinin kategorisinin belirlenmesi istenmiştir.
+
+### Claude Çıktısı
+
+Kategori: Teknik Sorun
+
+Gerekçe: Mesaj kullanıcı hesabına erişim problemi içerdiği için teknik destek kapsamında değerlendirilmiştir.
+
+### Değerlendirme
+
+Model, örneklerden öğrendiği sınıflandırma biçimini koruyarak yeni mesajı doğru kategoriye yerleştirmiştir.
+
+### Sonuç
+
+**Başarılı**
 
 ---
 
-### Genel Değerlendirme
+## 6.3 Test 3 – XML Prompting
 
-Yapılan testler sonucunda açık talimatlar, uygun örnekler ve yapılandırılmış istemlerin birlikte kullanıldığı durumlarda daha tutarlı ve kaliteli çıktılar elde edildiği gözlemlenmiştir. Özellikle kurumsal kullanım senaryolarında görevin amacı, kısıtları ve çıktı biçiminin açık şekilde belirtilmesi önerilmektedir.
-# 6. Başarılı Kullanım Örnekleri
+### Kullanılan Prompt
 
-Claude ve benzeri büyük dil modelleri günümüzde birçok sektörde aktif olarak kullanılmaktadır. Doğru prompt teknikleri ve uygun entegrasyonlarla iş süreçlerinde önemli verimlilik artışları sağlanabilmektedir.
+XML etiketleri kullanılarak Ubuntu sunucusundaki güvenlik bulgularının değerlendirilmesi istenmiştir.
 
-### 6.1 Yazılım Geliştirme
+### Claude Çıktısı
 
-Yazılım ekipleri Claude'u;
+Claude ilk aşamada gerçek sistem verisi bulunmadığı için doğrudan güvenlik raporu üretmek yerine ek açıklama istemiştir. Eğitim amacıyla örnek veri kullanılması belirtildikten sonra bulguları risk seviyelerine göre sınıflandırmış ve çözüm önerilerini Markdown tablosu halinde sunmuştur.
 
-- Kod açıklamaları oluşturma,
-- Dokümantasyon hazırlama,
-- Kod inceleme (Code Review),
-- Test senaryoları oluşturma,
-- Hata analizleri
+### Değerlendirme
 
-gibi görevlerde destek amaçlı kullanabilmektedir.
+Model XML yapısını doğru yorumlamış, kesin olmayan bilgileri gerçekmiş gibi sunmamış ve verilen kısıtlara uygun davranmıştır.
 
-### 6.2 Müşteri Hizmetleri
+### Sonuç
 
-Müşteri destek ekipleri;
+**Başarılı**
 
-- Sık sorulan soruların cevaplanması,
-- E-posta taslaklarının hazırlanması,
-- Destek taleplerinin sınıflandırılması,
-- Önceliklendirme işlemleri
+---
 
-gibi süreçlerde yapay zekâdan yararlanabilmektedir.
+## 6.4 Test 4 – Task Decomposition
 
-### 6.3 Teknik Doküman Hazırlama
+### Kullanılan Prompt
+
+Bir sızma testi raporunun hazırlanma sürecini adım adım planla.
+
+### Claude Çıktısı
+
+Model görevi dokuz aşamaya ayırmıştır:
+
+1. Kapsam belirleme
+2. Bilgi toplama
+3. Zafiyet taraması
+4. Doğrulama
+5. Risk değerlendirmesi
+6. Dokümantasyon
+7. Çözüm önerileri
+8. Yönetici özeti
+9. Son kontrol
+
+### Değerlendirme
+
+Görev mantıklı alt adımlara bölünmüş ve süreç takip edilebilir hâle getirilmiştir.
+
+### Sonuç
+
+**Başarılı**
+
+---
+
+## 6.5 Test Sonuçlarının Karşılaştırılması
+
+| Test | Kullanılan Teknik | Sonuç |
+|------|-------------------|--------|
+| Test 1 | Açık ve Net Talimat | Başarılı |
+| Test 2 | Few-Shot Prompting | Başarılı |
+| Test 3 | XML Prompting | Başarılı |
+| Test 4 | Task Decomposition | Başarılı |
+
+Yapılan uygulamalar sonucunda Claude'un verilen talimatlara yüksek oranda uyum sağladığı gözlemlenmiştir. Özellikle açık ve ayrıntılı promptlarda daha düzenli ve tutarlı çıktılar üretildiği görülmüştür. Few-Shot Prompting sınıflandırma işlemlerinde başarılı sonuç verirken, XML etiketleri karmaşık görevlerin düzenli biçimde ifade edilmesini kolaylaştırmıştır. Task Decomposition tekniği ise çok aşamalı işlemlerin planlanmasında modelin daha sistematik çalışmasını sağlamıştır.
+
+# 7. Başarılı Kullanım Örnekleri
+
+Claude, yalnızca sohbet amaçlı kullanılan bir yapay zekâ modeli değildir. Doğru Prompt Engineering teknikleri ve uygun entegrasyonlarla birlikte yazılım geliştirme, siber güvenlik, teknik dokümantasyon ve kurumsal süreç yönetimi gibi birçok alanda etkin şekilde kullanılabilmektedir.
+
+Araştırma kapsamında Claude'un kullanılabileceği bazı örnek senaryolar aşağıda verilmiştir.
+
+## 7.1 Yazılım Geliştirme
+
+Yazılım geliştirme süreçlerinde Claude aşağıdaki görevlerde kullanılabilir.
+
+- Kod açıklama
+- Kod refactoring önerileri
+- Birim test (Unit Test) oluşturma
+- API dokümantasyonu hazırlama
+- README dosyalarının oluşturulması
+- Hata mesajlarının yorumlanması
+
+Bu kullanım sayesinde geliştiricilerin dokümantasyon ve kod inceleme süreçleri hızlandırılabilir.
+
+---
+
+## 7.2 Siber Güvenlik
+
+Claude özellikle güvenlik ekiplerinin günlük çalışmalarında yardımcı olabilir.
+
+Örnek kullanım alanları:
+
+- Log analizi
+- Güvenlik raporu hazırlama
+- CVE özetleri oluşturma
+- SIEM çıktılarının yorumlanması
+- IOC analizleri
+- Zafiyet raporlarının özetlenmesi
+- Pentest raporlarının düzenlenmesi
+
+Ancak güvenlik açısından kritik kararların yalnızca yapay zekâ çıktısına göre verilmemesi gerekmektedir.
+
+---
+
+## 7.3 Teknik Dokümantasyon
+
+Claude aşağıdaki teknik belgelerin hazırlanmasında kullanılabilir.
+
+- Kullanım kılavuzları
+- Kurulum dokümanları
+- API dokümantasyonu
+- Teknik raporlar
+- Eğitim dokümanları
+
+Standart bir çıktı formatı kullanıldığı için belge hazırlama süresi önemli ölçüde azaltılabilir.
+
+---
+
+## 7.4 Müşteri Destek Süreçleri
 
 Claude;
 
-- Teknik rapor,
-- Toplantı özeti,
-- Kullanım kılavuzu,
-- Proje dokümantasyonu
+- Destek taleplerini sınıflandırabilir.
+- Hazır cevap taslakları oluşturabilir.
+- Sık sorulan soruları özetleyebilir.
+- Destek kayıtlarını analiz edebilir.
 
-hazırlama süreçlerinde taslak oluşturma ve düzenleme desteği sağlayabilir.
+Bu sayede müşteri temsilcilerinin iş yükü azaltılabilir.
 
 ---
 
-# 7. Workflow Tasarımları
+## 7.5 Veri Analizi
 
-Workflow, belirli bir işin başlangıcından tamamlanmasına kadar izlenen adımların planlı biçimde yürütülmesini ifade eder.
+Claude;
 
-Bu araştırma kapsamında kurum içerisinde kullanılabilecek iki örnek workflow önerilmiştir.
+- Büyük metin dosyalarını özetleyebilir.
+- CSV verilerini yorumlayabilir.
+- Eğilimleri açıklayabilir.
+- Rapor taslakları hazırlayabilir.
+- Toplantı notlarını özetleyebilir.
 
-## Workflow 1 – Teknik Rapor Hazırlama
+Bu özellikler özellikle yönetim raporlarının hazırlanmasında fayda sağlayabilir.
+
+---
+
+# 8. Workflow Tasarımları
+
+Araştırma kapsamında Claude'un kurum içerisinde kullanılabileceği örnek iş akışları hazırlanmıştır.
+
+## Workflow 1 – Teknik Doküman Oluşturma
 
 ```text
-Konu Belirleme
-      ↓
-Bilgi Toplama
-      ↓
-Claude ile Taslak Oluşturma
-      ↓
+Kullanıcı
+      │
+      ▼
+Claude
+      │
+Prompt Analizi
+      │
+Markdown Dokümanı
+      │
 İnsan Kontrolü
-      ↓
-Son Düzenleme
-      ↓
-PDF/DOCX Teslimi
+      │
+Nihai Doküman
 ```
 
-Bu workflow sayesinde rapor hazırlama sürecinde zaman tasarrufu sağlanabilir. Son kontrolün insan tarafından yapılması doğruluk açısından önemlidir.
+Bu süreçte kullanıcı tarafından verilen bilgiler Claude tarafından teknik dokümana dönüştürülmekte, ardından insan kontrolü ile son hâli oluşturulmaktadır.
 
 ---
 
-## Workflow 2 – Müşteri Destek Süreci
+## Workflow 2 – Güvenlik Log Analizi
 
 ```text
-Müşteri Talebi
-      ↓
-Talebin Analizi
-      ↓
-Claude ile Taslak Cevap
-      ↓
-Personel Kontrolü
-      ↓
-Müşteriye Gönderim
+Log Dosyaları
+       │
+       ▼
+Claude
+       │
+Olay Analizi
+       │
+Risk Değerlendirmesi
+       │
+Rapor
 ```
 
-Bu süreçte yapay zekâ ilk taslağı hazırlarken, nihai karar ve gönderim yetkisi insan kullanıcıda kalmaktadır. Böylece hem hız hem de kalite artırılabilir.
-# 8. Riskler ve Dikkat Edilmesi Gereken Noktalar
-
-Claude ve benzeri yapay zekâ sistemleri birçok avantaj sağlasa da kurumsal kullanımlarda dikkat edilmesi gereken bazı riskler bulunmaktadır.
-
-## 8.1 Veri Gizliliği
-
-Kuruma ait gizli bilgiler, müşteri verileri veya kişisel veriler yapay zekâ sistemlerine gönderilmeden önce kurum politikaları ve yürürlükteki mevzuat dikkate alınmalıdır.
-
-## 8.2 Doğrulama İhtiyacı
-
-Yapay zekâ tarafından oluşturulan içerikler her zaman doğru olmayabilir. Teknik raporlar, kodlar ve analizler uzman kişiler tarafından kontrol edilmelidir.
-
-## 8.3 Aşırı Bağımlılık
-
-Yapay zekâ sistemleri karar verici değil, karar destek aracı olarak kullanılmalıdır. Nihai sorumluluk kullanıcıya aittir.
-
-## 8.4 Güncellik
-
-Yapay zekâ modellerinin verdiği bilgiler güncel olmayabilir. Gerektiğinde resmi dokümanlar ve güvenilir kaynaklarla doğrulama yapılmalıdır.
+Bu iş akışı güvenlik olaylarının daha hızlı analiz edilmesine yardımcı olabilir.
 
 ---
 
-# 9. Sonuç
+## Workflow 3 – Yazılım Geliştirme Süreci
 
-Bu araştırmada Claude ekosisteminin temel bileşenleri olan Skills, Model Context Protocol (MCP), Prompt Engineering teknikleri ve Workflow tasarımları incelenmiştir.
+```text
+Kod
+ │
+ ▼
+Claude
+ │
+Kod İncelemesi
+ │
+Refactoring Önerileri
+ │
+Dokümantasyon
+```
 
-Yapılan değerlendirmeler sonucunda, doğru prompt teknikleri ve uygun entegrasyonlarla Claude'un kurum içindeki birçok iş sürecinde verimlilik sağlayabileceği görülmüştür. Özellikle teknik rapor hazırlama, doküman düzenleme, yazılım geliştirme ve müşteri iletişimi gibi alanlarda önemli zaman tasarrufu sağlayabilecek bir yardımcı araç olduğu değerlendirilmiştir.
-
-Ancak yapay zekâ tarafından üretilen içeriklerin doğruluğunun insan tarafından kontrol edilmesi, veri gizliliğine dikkat edilmesi ve kritik kararların yalnızca yapay zekâ çıktısına dayandırılmaması gerektiği sonucuna varılmıştır.
+Bu süreçte geliştiriciler kodlarını daha hızlı inceleyebilir ve standart dokümantasyon oluşturabilir.
 
 ---
 
-# 10. Kaynakça
+# 9. Riskler ve Dikkat Edilmesi Gereken Noktalar
 
-1. Anthropic Documentation – https://docs.anthropic.com/
-2. Anthropic Support Center – https://support.anthropic.com/
-3. Anthropic MCP Documentation – https://modelcontextprotocol.io/
-4. Anthropic Prompt Engineering Guide – https://docs.anthropic.com/
-5. GitHub Model Context Protocol Organization – https://github.com/modelcontextprotocol
+Claude güçlü bir yapay zekâ modeli olmasına rağmen bazı sınırlamalara sahiptir.
 
+## 9.1 Yanlış Bilgi Üretimi
+
+Model zaman zaman gerçeğe uymayan bilgiler üretebilir. Bu nedenle özellikle teknik, hukuki ve güvenlikle ilgili çıktılar doğrulanmalıdır.
+
+---
+
+## 9.2 Gizlilik
+
+Kurumsal sistemlere ait hassas bilgiler doğrudan modele gönderilmemelidir.
+
+Özellikle;
+
+- Parolalar
+- API anahtarları
+- Müşteri bilgileri
+- Finansal veriler
+- Kişisel veriler
+
+gibi bilgiler korunmalıdır.
+
+---
+
+## 9.3 İnsan Denetimi
+
+Claude tarafından oluşturulan içerikler nihai çıktı olarak kabul edilmemelidir.
+
+Uzman kontrolü;
+
+- teknik doğruluk,
+- güvenlik,
+- güncellik
+- kurum politikaları
+
+açısından mutlaka yapılmalıdır.
+
+---
+
+## 9.4 Prompt Kalitesi
+
+Kötü hazırlanmış promptlar;
+
+- eksik cevaplara,
+- yanlış yorumlara,
+- biçim hatalarına
+
+neden olabilmektedir.
+
+Bu nedenle Prompt Engineering kurumsal kullanım açısından büyük önem taşımaktadır.
+
+---
+
+# 10. Sonuç
+
+Bu araştırmada Claude ekosisteminin temel bileşenleri olan Claude Skills, Model Context Protocol (MCP) ve Prompt Engineering teknikleri incelenmiştir. Ayrıca dört farklı Prompt Engineering yaklaşımı Claude modeli üzerinde uygulanmış ve elde edilen sonuçlar değerlendirilmiştir.
+
+Yapılan testler sonucunda açık ve ayrıntılı hazırlanan promptların model çıktısının doğruluğunu ve tutarlılığını artırdığı gözlemlenmiştir. Few-Shot Prompting tekniği özellikle sınıflandırma işlemlerinde başarılı sonuçlar verirken, XML tabanlı yapılandırılmış promptlar karmaşık görevlerin daha düzenli şekilde ifade edilmesini sağlamıştır. Task Decomposition yaklaşımı ise çok aşamalı süreçlerin planlanmasını kolaylaştırmıştır.
+
+Claude'un yazılım geliştirme, teknik dokümantasyon, siber güvenlik ve veri analizi gibi alanlarda önemli katkılar sağlayabileceği değerlendirilmiştir. Bununla birlikte model tarafından üretilen içeriklerin özellikle güvenlik, hukuk ve kritik karar süreçlerinde uzman kişiler tarafından doğrulanması gerektiği sonucuna ulaşılmıştır.
+
+Sonuç olarak Claude, doğru Prompt Engineering teknikleri ve uygun iş akışları ile desteklendiğinde kurumsal süreçlerde verimliliği artırabilecek güçlü bir yapay zekâ aracıdır.
+
+---
+
+# 11. Kaynakça
+
+1. Anthropic. *Claude Documentation*. https://docs.anthropic.com/
+
+2. Anthropic. *Prompt Engineering Overview*. https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+
+3. Anthropic. *Model Context Protocol*. https://modelcontextprotocol.io/
+
+4. Anthropic. *Claude Skills Documentation*. https://docs.anthropic.com/
+
+5. Anthropic. *Claude Examples*. https://docs.anthropic.com/en/docs/build-with-claude/examples
+
+6. GitHub. *Model Context Protocol*. https://github.com/modelcontextprotocol
+
+7. OpenAI. *Prompt Engineering Best Practices*. https://platform.openai.com/docs/guides/prompt-engineering
