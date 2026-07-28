@@ -96,6 +96,7 @@ Bu Skill'in amacı, teknik ekip tarafından hazırlanan raporları standart bir 
 - Yazım ve dil kontrolü yapma
 - Kaynakça düzenleme
 - PDF ve DOCX çıktısı hazırlama
+  Bu çalışma kapsamında resmi dokümantasyon incelenmiş, örnek promptlar hazırlanmış ve kurumsal iş süreçlerine yönelik örnek workflow tasarımları geliştirilmiştir.
 
   # 4. Model Context Protocol (MCP)
 
@@ -246,5 +247,62 @@ Sütunlar: Bulgu, Risk Seviyesi, Açıklama, Çözüm.
 ```
 
 Bu yapı sayesinde promptun bölümleri açıkça ayrılır. Özellikle çok sayıda talimat, veri veya örnek içeren görevlerde okunabilirlik ve yönetilebilirlik artar.
+## 5.4 Task Decomposition (Görev Bölme)
 
-Bu çalışma kapsamında resmi dokümantasyon incelenmiş, örnek promptlar hazırlanmış ve kurumsal iş süreçlerine yönelik örnek workflow tasarımları geliştirilmiştir.
+Task Decomposition, büyük ve karmaşık bir görevin daha küçük ve yönetilebilir alt görevlere ayrılması yaklaşımıdır. Bu teknik, özellikle çok aşamalı işlemlerde modelin her adımı ayrı ayrı ele almasını sağlayarak daha tutarlı sonuçlar elde edilmesine yardımcı olur.
+
+Örneğin tek seferde "Bir sızma testi raporu hazırla." demek yerine süreç aşağıdaki şekilde bölünebilir:
+
+1. Hedef sistemi analiz et.
+2. Güvenlik açıklarını listele.
+3. Risk seviyelerini değerlendir.
+4. Çözüm önerileri hazırla.
+5. Teknik raporu oluştur.
+
+Bu yaklaşım hem hata oranını azaltır hem de her aşamanın ayrı ayrı kontrol edilmesini kolaylaştırır.
+
+---
+
+## 5.5 Prompt Tekniklerinin Karşılaştırılması
+
+| Teknik | Avantajı | Kullanım Alanı |
+|---------|----------|----------------|
+| Açık ve Net Talimat | Daha doğru cevaplar üretir | Genel amaçlı görevler |
+| Few-Shot Prompting | Belirli formatı öğretir | Sınıflandırma ve standart çıktılar |
+| XML Prompting | Karmaşık istemleri düzenler | Uzun ve çok aşamalı görevler |
+| Task Decomposition | Büyük görevleri yönetilebilir hâle getirir | Teknik analiz ve raporlama |
+
+---
+
+## 5.6 Test Edilen Prompt Örnekleri ve Gözlemler
+
+Araştırma kapsamında farklı prompt teknikleri kullanılarak örnek istemler hazırlanmıştır.
+
+### Test 1 – Açık Talimat
+
+**Sonuç:**
+
+Model, istenen çıktı biçimine büyük ölçüde uygun ve düzenli bir cevap üretmiştir.
+
+---
+
+### Test 2 – Few-Shot Prompt
+
+**Sonuç:**
+
+Örnekler sayesinde model aynı biçimde ve tutarlı sınıflandırmalar gerçekleştirmiştir.
+
+---
+
+### Test 3 – XML Prompt
+
+**Sonuç:**
+
+Görev, bağlam ve çıktı biçiminin ayrı etiketlerle belirtilmesi istemin okunabilirliğini artırmış ve daha düzenli cevaplar üretilmesini sağlamıştır.
+
+---
+
+### Genel Değerlendirme
+
+Yapılan testler sonucunda açık talimatlar, uygun örnekler ve yapılandırılmış istemlerin birlikte kullanıldığı durumlarda daha tutarlı ve kaliteli çıktılar elde edildiği gözlemlenmiştir. Özellikle kurumsal kullanım senaryolarında görevin amacı, kısıtları ve çıktı biçiminin açık şekilde belirtilmesi önerilmektedir.
+
