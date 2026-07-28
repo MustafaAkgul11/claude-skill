@@ -703,8 +703,5 @@ Sonuç olarak Claude, doğru Prompt Engineering teknikleri ve uygun iş akışla
 
 4. Anthropic. *Claude Skills Documentation*. https://docs.anthropic.com/
 
-5. Anthropic. *Claude Examples*. https://docs.anthropic.com/en/docs/build-with-claude/examples
+5. GitHub. *Model Context Protocol*. https://github.com/modelcontextprotocol
 
-6. GitHub. *Model Context Protocol*. https://github.com/modelcontextprotocol
-
-7. OpenAI. *Prompt Engineering Best Practices*. https://platform.openai.com/docs/guides/prompt-engineering
