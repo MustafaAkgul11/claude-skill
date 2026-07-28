@@ -704,7 +704,8 @@ Sonuç olarak Claude, doğru Prompt Engineering teknikleri ve uygun iş akışla
 
 3. Model Context Protocol https://modelcontextprotocol.io/
 
-4. Anthropic. *Claude Skills Documentation*. https://docs.anthropic.com/
+4. GitHub - Model Context Protocol https://github.com/modelcontextprotocol
 
-5. GitHub. *Model Context Protocol*. https://github.com/modelcontextprotocol
+5. Anthropic Cookbook https://github.com/anthropics/anthropic-cookbook
 
+6. Anthropic Blog https://www.anthropic.com/news
