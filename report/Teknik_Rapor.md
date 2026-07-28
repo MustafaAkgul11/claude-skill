@@ -97,4 +97,154 @@ Bu Skill'in amacı, teknik ekip tarafından hazırlanan raporları standart bir 
 - Kaynakça düzenleme
 - PDF ve DOCX çıktısı hazırlama
 
+  # 4. Model Context Protocol (MCP)
+
+## 4.1 MCP Nedir?
+
+Model Context Protocol (MCP), yapay zekâ modellerinin harici veri kaynakları, uygulamalar ve servislerle güvenli ve standart bir yöntem kullanarak iletişim kurmasını sağlayan açık bir protokoldür. Bu yapı sayesinde bir yapay zekâ modeli yalnızca eğitim verisine bağlı kalmaz; ihtiyaç duyduğu anda farklı sistemlerden güncel bilgi alabilir ve bu sistemlerle etkileşim kurabilir.
+
+MCP'nin temel amacı, farklı araçlar ile yapay zekâ modelleri arasında ortak bir iletişim standardı oluşturmaktır. Böylece her uygulama için ayrı entegrasyon geliştirmek yerine tek bir protokol üzerinden birçok sisteme erişim sağlanabilir.
+
+## 4.2 MCP Nasıl Çalışır?
+
+MCP mimarisi genel olarak üç bileşenden oluşur:
+
+- **MCP Host:** Yapay zekâ uygulamasını çalıştıran istemci.
+- **MCP Client:** İstekleri ilgili sunucuya ileten bileşen.
+- **MCP Server:** Dosya sistemi, veritabanı veya başka bir servise erişim sağlayan bileşen.
+
+Bu yapı sayesinde kullanıcı bir istekte bulunduğunda yapay zekâ modeli gerekli bilgiyi uygun MCP sunucusundan alabilir ve kullanıcıya güncel sonuç sunabilir.
+
+## 4.3 Yaygın MCP Sunucuları
+
+Günümüzde farklı amaçlar için geliştirilen birçok MCP sunucusu bulunmaktadır.
+
+Örnekler:
+
+- Dosya Sistemi (Filesystem)
+- GitHub
+- PostgreSQL
+- SQLite
+- Google Drive
+- Slack
+- Notion
+
+Bu entegrasyonlar sayesinde yapay zekâ modeli yalnızca metin üretmekle kalmaz, aynı zamanda mevcut kurumsal sistemlerle birlikte çalışabilir.
+
+## 4.4 Kurum İçin MCP Önerileri
+
+Araştırma sonucunda kurum içerisinde kullanılabilecek bazı MCP entegrasyon fikirleri aşağıda verilmiştir.
+
+| Entegrasyon | Sağlayacağı Fayda |
+|-------------|-------------------|
+| GitHub MCP | Kod depolarının analiz edilmesi |
+| PostgreSQL MCP | Veritabanı sorgularının desteklenmesi |
+| Dosya Sistemi MCP | Teknik dokümanlara erişim |
+| Slack MCP | Ekip iletişim süreçlerinin desteklenmesi |
+
+Bu entegrasyonlar sayesinde bilgiye erişim hızlanabilir, manuel işlemler azaltılabilir ve çalışanların verimliliği artırılabilir.
+# 5. Prompt Engineering Teknikleri
+
+Prompt Engineering, bir yapay zekâ modelinden daha doğru, tutarlı ve kullanılabilir sonuçlar elde etmek amacıyla verilen istemlerin sistemli biçimde hazırlanmasıdır. İyi hazırlanmış bir prompt; görevi, bağlamı, kısıtları ve beklenen çıktı biçimini açıkça belirtir.
+
+Claude ile çalışırken kullanılan promptun açıklığı, verilen örneklerin kalitesi ve istenen çıktı formatının belirtilmesi sonuç üzerinde doğrudan etkilidir. Özellikle kurumsal görevlerde yalnızca genel bir istek vermek yerine, görevin amacı ve başarı ölçütleri de açıklanmalıdır.
+
+## 5.1 Açık ve Net Talimat Verme
+
+Açık ve net talimat verme, temel prompt tekniklerinden biridir. Bu yöntemde kullanıcı, modelden istediği görevi belirsiz ifadeler yerine ayrıntılı ve doğrudan biçimde açıklar.
+
+İyi bir talimatta aşağıdaki unsurlar bulunabilir:
+
+- Yapılacak görev
+- Görevin amacı
+- Kullanılacak bağlam
+- Uyulması gereken kısıtlar
+- İstenen çıktı biçimi
+- Hedef kullanıcı veya okuyucu kitlesi
+
+### Belirsiz Prompt Örneği
+
+```text
+Linux hakkında bir rapor hazırla.
+```
+
+Bu promptta raporun konusu, uzunluğu, hedef kitlesi ve biçimi belirtilmemiştir. Bu nedenle oluşturulan sonuç kullanıcının gerçek ihtiyacını tam olarak karşılamayabilir.
+
+### Geliştirilmiş Prompt Örneği
+
+```text
+Üniversite öğrencilerine yönelik, Linux işletim sisteminin temel özelliklerini açıklayan yaklaşık 500 kelimelik bir teknik rapor hazırla. Raporda Linux'un tarihçesi, açık kaynak yapısı, temel kullanım alanları ve avantajları yer alsın. Çıktıyı Markdown biçiminde, başlıklar ve kısa paragraflar kullanarak oluştur.
+```
+
+Geliştirilmiş promptta görev, hedef kitle, kapsam, uzunluk ve çıktı formatı açıkça belirtilmiştir. Böylece modelden alınan cevabın daha düzenli ve kullanılabilir olması beklenir.
+
+## 5.2 Few-Shot Prompting
+
+Few-Shot Prompting, modele görevden önce bir veya daha fazla örnek gösterilmesi yöntemidir. Model, verilen örneklerdeki yapıyı ve cevap biçimini inceleyerek yeni girdiye benzer şekilde cevap üretir.
+
+Bu yöntem özellikle aşağıdaki görevlerde yararlıdır:
+
+- Metin sınıflandırma
+- Bilgi çıkarma
+- Belirli bir yazım biçimini koruma
+- Müşteri mesajlarını kategorilere ayırma
+- Standart rapor veya kayıt oluşturma
+
+### Few-Shot Prompt Örneği
+
+```text
+Aşağıdaki müşteri mesajlarını "Teknik Sorun", "Fatura" veya "Bilgi Talebi" kategorilerinden biriyle sınıflandır.
+
+Örnek 1:
+Mesaj: Uygulamaya giriş yaptığımda hata alıyorum.
+Kategori: Teknik Sorun
+
+Örnek 2:
+Mesaj: Bu ayki faturam neden daha yüksek geldi?
+Kategori: Fatura
+
+Örnek 3:
+Mesaj: Ürünün kurumsal paketi hakkında bilgi almak istiyorum.
+Kategori: Bilgi Talebi
+
+Yeni mesaj:
+Şifremi yeniledim ancak hesabıma hâlâ erişemiyorum.
+
+Kategori:
+```
+
+Bu örnekte model, önceki örneklerden sınıflandırma biçimini öğrenir ve yeni mesajı aynı kategori yapısına göre değerlendirir.
+
+## 5.3 XML Etiketleriyle Yapılandırılmış Prompt
+
+XML etiketleri, uzun veya karmaşık promptlarda farklı bilgi bölümlerini birbirinden ayırmak için kullanılabilir. Rol, bağlam, görev, kısıtlar ve çıktı formatı ayrı etiketler içinde tanımlanabilir.
+
+### XML Prompt Örneği
+
+```xml
+<role>
+Bir siber güvenlik analisti olarak görev yap.
+</role>
+
+<context>
+Ubuntu tabanlı bir sunucuda güvenlik incelemesi gerçekleştirilmektedir.
+</context>
+
+<task>
+Verilen güvenlik bulgularını önem derecesine göre değerlendir.
+</task>
+
+<constraints>
+Kesin olmayan bilgileri gerçekmiş gibi sunma.
+Her bulgu için kısa bir çözüm önerisi ver.
+</constraints>
+
+<output_format>
+Sonucu Markdown tablosu olarak hazırla.
+Sütunlar: Bulgu, Risk Seviyesi, Açıklama, Çözüm.
+</output_format>
+```
+
+Bu yapı sayesinde promptun bölümleri açıkça ayrılır. Özellikle çok sayıda talimat, veri veya örnek içeren görevlerde okunabilirlik ve yönetilebilirlik artar.
+
 Bu çalışma kapsamında resmi dokümantasyon incelenmiş, örnek promptlar hazırlanmış ve kurumsal iş süreçlerine yönelik örnek workflow tasarımları geliştirilmiştir.
