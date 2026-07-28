@@ -231,23 +231,21 @@ XML etiketleri kullanılarak hazırlanan promptlarda görev farklı bölümlere 
 Örnek yapı:
 
 ```xml
-<role>Bir siber güvenlik analisti olarak görev yap.</role>
-
-<context>
-Ubuntu sunucusunda güvenlik incelemesi yapılmaktadır.
-</context>
-
-<task>
-Bulunan güvenlik açıklarını değerlendir.
-</task>
-
-<constraints>
-Kesin olmayan bilgileri gerçekmiş gibi sunma.
-</constraints>
-
-<output_format>
-Markdown tablosu oluştur.
-</output_format>
+Aşağıdaki müşteri mesajlarını kategorilere ayır.
+Örnek 1
+Mesaj: Uygulamaya giriş yapamıyorum.
+Kategori: Teknik Sorun
+Örnek 2
+Mesaj: Faturam beklediğimden yüksek geldi.
+Kategori: Fatura
+Örnek 3
+Mesaj: Siparişim hâlâ elime ulaşmadı.
+Kategori: Teslimat
+Şimdi aşağıdaki mesajı aynı formatta değerlendir.
+Mesaj:
+Şifremi değiştirdim ancak hesabıma giriş yapamıyorum.
+Kategori:
+Gerekçe:
 ```
 
 Bu yaklaşım özellikle uzun ve karmaşık görevlerde okunabilirliği artırmaktadır.
@@ -403,7 +401,7 @@ XML Prompting tekniğine ait prompt ve Claude tarafından oluşturulan cevap aş
 *Şekil 6.4. Claude tarafından oluşturulan güvenlik değerlendirmesi ve Markdown çıktısı.*
 ### Değerlendirme
 
-Model XML yapısını doğru yorumlamış, kesin olmayan bilgileri gerçekmiş gibi sunmamış ve verilen kısıtlara uygun davranmıştır.
+Claude, yapılandırılmış olarak verilen rol, bağlam, görev ve çıktı formatı talimatlarını doğru yorumlamıştır. Ayrıca kesin olmayan bilgileri gerçekmiş gibi sunmama kuralına uymuştur.
 
 ### Sonuç
 
@@ -442,8 +440,7 @@ Task Decomposition tekniğine ait prompt ve Claude'un oluşturduğu plan aşağ�
 
 ### Değerlendirme
 
-Görev mantıklı alt adımlara bölünmüş ve süreç takip edilebilir hâle getirilmiştir.
-
+Claude, karmaşık bir sızma testi raporlama sürecini mantıklı ve takip edilebilir alt görevlere ayırmıştır. Her adım için amaç, yapılacak işlem ve beklenen çıktı ayrı ayrı belirtilmiştir. Böylece süreç daha planlı ve yönetilebilir hâle gelmiştir.
 ### Sonuç
 
 **Başarılı**
@@ -545,65 +542,73 @@ Bu özellikler özellikle yönetim raporlarının hazırlanmasında fayda sağla
 
 Araştırma kapsamında Claude'un kurum içerisinde kullanılabileceği örnek iş akışları hazırlanmıştır.
 
-## Workflow 1 – Teknik Doküman Oluşturma
+---
 
-```text
-Kullanıcı
-      │
-      ▼
-Claude
-      │
-Prompt Analizi
-      │
-Markdown Dokümanı
-      │
-İnsan Kontrolü
-      │
-Nihai Doküman
+## 8.1 Workflow 1 – Teknik Doküman Oluşturma
+
+Bu senaryoda kullanıcı tarafından verilen bilgiler Claude tarafından analiz edilmekte, uygun Prompt Engineering teknikleri uygulanarak teknik doküman oluşturulmakta ve son olarak insan kontrolünden geçirilmektedir.
+
+```mermaid
+flowchart LR
+    A[Kullanıcı] --> B[Claude]
+    B --> C[Prompt Analizi]
+    C --> D[Markdown Dokümanı]
+    D --> E[İnsan Kontrolü]
+    E --> F[Nihai Doküman]
 ```
 
-Bu süreçte kullanıcı tarafından verilen bilgiler Claude tarafından teknik dokümana dönüştürülmekte, ardından insan kontrolü ile son hâli oluşturulmaktadır.
+**Şekil 8.1.** Claude kullanılarak teknik doküman oluşturma iş akışı.
 
 ---
 
-## Workflow 2 – Güvenlik Log Analizi
+## 8.2 Workflow 2 – Güvenlik Log Analizi
 
-```text
-Log Dosyaları
-       │
-       ▼
-Claude
-       │
-Olay Analizi
-       │
-Risk Değerlendirmesi
-       │
-Rapor
+Bu senaryoda sistem logları Claude tarafından analiz edilmekte, önemli güvenlik olayları belirlenmekte ve risk değerlendirmesi yapılarak rapor oluşturulmaktadır.
+
+```mermaid
+flowchart LR
+    A[Log Dosyaları] --> B[Claude]
+    B --> C[Log Analizi]
+    C --> D[Risk Değerlendirmesi]
+    D --> E[Güvenlik Raporu]
 ```
 
-Bu iş akışı güvenlik olaylarının daha hızlı analiz edilmesine yardımcı olabilir.
+**Şekil 8.2.** Güvenlik loglarının analiz edilmesi süreci.
 
 ---
 
-## Workflow 3 – Yazılım Geliştirme Süreci
-
-```text
-Kod
- │
- ▼
-Claude
- │
-Kod İncelemesi
- │
-Refactoring Önerileri
- │
-Dokümantasyon
-```
+## 8.3 Workflow 3 – Yazılım Geliştirme Süreci
 
 Bu süreçte geliştiriciler kodlarını daha hızlı inceleyebilir ve standart dokümantasyon oluşturabilir.
 
----
+```mermaid
+flowchart LR
+    A[Yazılım Geliştirici] --> B[Kaynak Kod]
+    B --> C[Claude]
+    C --> D[Kod İncelemesi]
+    D --> E[Refactoring Önerileri]
+    E --> F[Dokümantasyon]
+```
 
+**Şekil 8.3.** Claude destekli yazılım geliştirme iş akışı.
+
+---
+## 8.4 Workflow 4 – Müşteri Destek Süreci
+
+Claude, müşteri tarafından iletilen destek talebini analiz ederek kategorisini belirler ve uygun yanıt taslağını oluşturur.
+
+```mermaid
+flowchart LR
+    A[Müşteri Talebi] --> B[Claude]
+    B --> C[Talep Analizi]
+    C --> D[Kategori Belirleme]
+    D --> E[Cevap Taslağı]
+    E --> F[Destek Personeli]
+```
+
+**Şekil 8.4.** Claude destekli müşteri destek süreci.
+
+---
 # 9. Riskler ve Dikkat Edilmesi Gereken Noktalar
 
 Claude güçlü bir yapay zekâ modeli olmasına rağmen bazı sınırlamalara sahiptir.
