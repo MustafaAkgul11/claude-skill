@@ -17,7 +17,7 @@
 3. Claude Skills
 4. Model Context Protocol (MCP)
 5. Prompt Engineering Teknikleri
-6. Test Edilen Prompt Örnekleri ve Çıktıları
+6. Uygulamalı Prompt Testleri
 7. Başarılı Kullanım Örnekleri
 8. Workflow Tasarımları
 9. Riskler ve Dikkat Edilmesi Gereken Noktalar
