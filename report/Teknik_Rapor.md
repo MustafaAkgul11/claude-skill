@@ -698,11 +698,11 @@ Sonuç olarak Claude, doğru Prompt Engineering teknikleri ve uygun iş akışla
 
 # 11. Kaynakça
 
-1. Anthropic. *Claude Documentation*. https://docs.anthropic.com/
+1. Anthropic Documentation https://docs.anthropic.com/
 
-2. Anthropic. *Prompt Engineering Overview*. https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+2. Anthropic Support Center https://support.anthropic.com/
 
-3. Anthropic. *Model Context Protocol*. https://modelcontextprotocol.io/
+3. Model Context Protocol https://modelcontextprotocol.io/
 
 4. Anthropic. *Claude Skills Documentation*. https://docs.anthropic.com/
 
